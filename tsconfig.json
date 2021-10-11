@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noResolve": false,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "sourceMap": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "keyofStringsOnly": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "types": ["@emotion/react/types/css-prop"],
+    "maxNodeModuleJsDepth": 0,
+    "checkJs": false,
+    "outDir": "./dist/",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "typeRoots": ["node_modules/@types", "@type"],
+  "exclude": [
+    "./build",
+    "scripts",
+    "webpack",
+    "jest",
+    "./node_modules/**/*",
+    "./dist/**/*"
+  ],
+  "includes": ["./**/*", "@type", "src"]
+  }
