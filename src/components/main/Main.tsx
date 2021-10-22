@@ -3,12 +3,13 @@ import {jsx, css} from '@emotion/react';
 import axios from 'axios';
 
 export default function Main() {
-    const [data, setData] = useState(null);
-    
+    const [data, setData] = useState(undefined);
+    console.log(process.env.COMMUNITY_API)
+
     const fetch = () => {
         axios({
             method:'get',
-            url:'/posts',
+            url:`${process.env.COMMUNITY_API}`,
             headers:{
                 "Access-Control-Allow-Origin": "*",
             }
@@ -22,7 +23,7 @@ export default function Main() {
 
     return (
         <div css={mainStyle}>
-            test
+            test, {data}
         </div>
     )
 }

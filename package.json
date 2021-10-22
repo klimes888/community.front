@@ -7,10 +7,12 @@
     "bcrypt": "5.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-router-dom": "5.3.0"
+    "react-router-dom": "5.3.0",
+    "webpack-merge": "5.8.0"
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
+    "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.15.6",
     "@babel/preset-react": "7.14.5",
     "@babel/preset-typescript": "7.15.0",
@@ -18,6 +20,7 @@
     "@typescript-eslint/eslint-plugin": "4.32.0",
     "@typescript-eslint/parser": "4.32.0",
     "babel-loader": "8.2.2",
+    "dotenv-webpack": "7.0.3",
     "eslint": "7.32.0",
     "fork-ts-checker-webpack-plugin": "6.3.3",
     "html-webpack-plugin": "5.3.2",
@@ -33,8 +36,6 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --open",
-    "prebuild": "rimrçaf dist",
-    "build": "webpack --progress --mode production"
-  },
-  "proxy": "http://localhost:3000"
+    "build": "webpack --mode development  --config webpack.common.js"
+  }
 }
