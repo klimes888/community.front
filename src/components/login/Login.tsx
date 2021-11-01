@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {jsx, css} from '@emotion/react';
+import axiosFetch from '@/hooks/axiosFetch';
 
 export default function Login() {
+        // fetch
+        const _fetch = axiosFetch()
+
+    const [userInform, setUserInform] = useState({id:'', password:''});
+
+    const onchangeHandler = (e) => {
+        const {target} = e
+        setUserInform({...userInform, [target?.name]:target.value})
+    }
+
+    const sendDataHandler = () => {
+        console.log(userInform);
+        _fetch('post', 'login', userInform, null);
+    }
+
     return (
         <div css={layout}>
-            <input type="text" css={inputStyle}/>
-            <input type="text" css={inputStyle}/>
-            <button>login!</button>
+            <input
+                type="text"
+                css={inputStyle}
+                value={userInform?.id}
+                name='userId'
+                onChange={e => onchangeHandler(e)}
+            />
+            <input
+                type="password"
+                css={inputStyle}
+                value={userInform?.password}
+                name='password'
+                onChange={ e => onchangeHandler(e)}
+            />
+            <button onClick={sendDataHandler}>login!</button>
         </div>
     )
 }

@@ -10,11 +10,12 @@ module.exports = merge(common, {
 
   devServer: {
     proxy: {
-      "/api/*": {
+      "/api": {
         contentBase: path.join(__dirname, "dist"),
         publicPath: "/",
-        target: `${process.env.COMMUNITY_API}`, // 요청 url 앞에 target을 붙여주기, ex) http://localhost:8080/api/rest/myInfo
-        // pathRewrite: {"/api": "/"}, // /api에 해당하는 url을 없애기, ex http://localhost:8080/rest/myInfo
+        // target: `${process.env.COMMUNITY_API}`, // 요청 url 앞에 target을 붙여주기, ex) http://localhost:8080/api/rest/myInfo
+        target: `http://localhost:3000`, // 요청 url 앞에 target을 붙여주기, ex) http://localhost:8080/api/rest/myInfo
+        pathRewrite: {"/api": "/"}, // /api에 해당하는 url을 없애기, ex http://localhost:8080/rest/myInfo
         historyApiFallback:true,
         changeOrigin: true,
       }
@@ -22,6 +23,6 @@ module.exports = merge(common, {
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    port:8080,
+    port:4000,
   },
 });

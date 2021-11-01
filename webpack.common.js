@@ -2,8 +2,11 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack')
+const Dotenv = require('dotenv-webpack');
+const mode = process.env.NODE_ENV || "development";
+
 module.exports = {
+  mode,
   entry: {
     'js/app': ['@babel/polyfill','./App.tsx'],
   },
@@ -47,5 +50,4 @@ module.exports = {
     }),
   ],
   devtool:'source-map',
-  mode:"common"
 };
