@@ -5,7 +5,17 @@
         { "targets": { "browsers": ["last 2 versions", ">= 5% in KR"] } }
       ],
       "@babel/react",
-      "@babel/typescript"
+      "@babel/typescript",
+      [
+        "@emotion/babel-preset-css-prop",
+        {
+          "autoLabel": "dev-only",
+          "labelFormat": "[local]",
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
     ],
     "plugins": ["@emotion/babel-plugin"]
 

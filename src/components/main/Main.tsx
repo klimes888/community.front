@@ -1,3 +1,4 @@
+/** @jsx jsx */
 import React, { useEffect, useState } from 'react'
 import {jsx, css} from '@emotion/react';
 import axios from 'axios';
@@ -19,17 +20,28 @@ export default function Main() {
 
     // useEffect(() => {
     //     fetch();
-    // }, [])
+    // }, []);
 
     return (
         <div css={mainStyle}>
-            test, {data}
+            <aside css={asideLayout}>
+                <text css={theme => ({color:theme.colors.white})}>안녕</text>
             <Link to="login">login</Link><br/>
             <Link to="signup">signup</Link>
+
+            </aside>
         </div>
     )
 }
 
-const mainStyle = css`
-color:red;
+const mainStyle = css``;
+
+const asideLayout = css`
+display: flex;
+width:360px;
+height:100%;
 `;
+
+const textstyle = css`
+`
+

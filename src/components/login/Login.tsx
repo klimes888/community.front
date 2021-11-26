@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {jsx, css} from '@emotion/react';
+import {css} from '@emotion/react';
 import axiosFetch from '@/hooks/axiosFetch';
 
 export default function Login() {

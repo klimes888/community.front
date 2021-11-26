@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Global } from '@emotion/react'
+import { Global, ThemeProvider } from '@emotion/react';
 import { GlobalStyle } from '@/style/global';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
-
+import {theme} from '@/style/theme';
 // pages
 import LoginPage from '@/pages/page_Login/LoginPage';
 import MainPage from '@/pages/page_Main/Main';
@@ -15,6 +15,7 @@ const Root: React.FC = () => {
 
     return (
         <QueryClientProvider client={queryClient}>
+            <ThemeProvider theme={theme} >
             <Global styles={GlobalStyle} />
             <BrowserRouter>
                 <Switch>
@@ -24,6 +25,7 @@ const Root: React.FC = () => {
                     <Route path="/setting" component={Setting} />
                 </Switch>
             </BrowserRouter>
+            </ThemeProvider>
         </QueryClientProvider>
     );
 }

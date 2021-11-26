@@ -21,7 +21,7 @@ export default function Signup() {
 
     return (
         <article css={Layout}>
-            { inputArr?.map( ({index, type, placeHolder, style, name }) => 
+            { inputArr?.map( ({index, type, placeHolder, style, name }) =>
             <input key={index} type={type} placeholder={placeHolder} css={style} onChange={e => setSignupData({...signupData, [name]:e.target.value})} />
             )}
             <button onClick={signupHandler}>회원가입!</button>
