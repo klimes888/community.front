@@ -1,12 +1,13 @@
-/** @jsx jsx */
-import React, { useEffect, useState } from 'react'
-import {jsx, css} from '@emotion/react';
+import React, { useState } from 'react'
+import {css} from '@emotion/react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Aside from '../aside/Aside';
+
+// style
+import { bodyStyle } from '@/style/common/bodyStyle';
 
 export default function Main() {
     const [data, setData] = useState(undefined);
-
     // const fetch = () => {
     //     axios({
     //         method:'get',
@@ -22,19 +23,17 @@ export default function Main() {
     //     fetch();
     // }, []);
 
-    return (
-        <div css={mainStyle}>
-            <aside css={asideLayout}>
-                <text css={theme => ({color:theme.colors.white})}>안녕</text>
-            <Link to="login">login</Link><br/>
-            <Link to="signup">signup</Link>
+	return (
+		<div css={bodyStyle}>
+			<div css={divideDic}>
+				<Aside />
+				<section css={asideLayout} >
 
-            </aside>
-        </div>
-    )
+				</section>
+			</div>
+		</div>
+	)
 }
-
-const mainStyle = css``;
 
 const asideLayout = css`
 display: flex;
@@ -42,6 +41,9 @@ width:360px;
 height:100%;
 `;
 
-const textstyle = css`
-`
+const divideDic = css`
+display: flex;
+flex-direction: row;
+`;
+
 
