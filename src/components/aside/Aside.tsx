@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 export default function Aside() {
 
   const linkList = [
-    {index:0, title:'Home', value:''},
-    {index:1, title:'Portfolio', value:''},
+    {index:0, title:'Home', value:'/'},
+    {index:1, title:'Portfolio', value:'/portfolio'},
     {index:2, title:'Community', value:''},
     {index:3, title:'Connect', value:''}
   ]
@@ -20,13 +20,17 @@ export default function Aside() {
 
       </article>
       <article css={bodyInner}>
-      {
-        linkList?.map(({ index, title, value }) =>
-          <TextWrap to={value} key={index} >
-            <text css={theme => [themeStyle(theme, 'text'), texttyle]}>{title}</text>
-          </TextWrap>
-        )
-      }
+        <ul>
+          {
+            linkList?.map(({ index, title, value }) =>
+              <TextWrap to={value} key={index} >
+                <li css={theme => [themeStyle(theme, 'text'), texttyle]}>
+                  { title }
+                </li>
+              </TextWrap>
+            )
+          }
+        </ul>
       </article>
     </aside>
 
@@ -43,8 +47,7 @@ export default function Aside() {
       case 'text':
         return {
                   color:theme.colors.white,
-                  fontSize:theme.fontsize.font18,
-                  fontWeight:theme.fontweight.font500,
+                  fontSize:theme.fontsize.font16,
                 }
       default:
         break;
@@ -56,8 +59,9 @@ export default function Aside() {
 const bodyLayout = css`
 display: flex;
 flex-direction: column;
-width:300px;
+width:18.5rem;
 height:100vh;
+z-index: 999;
 `;
 
 const bodyTop = css`
@@ -80,4 +84,3 @@ margin: 0.5em 0;
 
 const texttyle = css`
 `;
-

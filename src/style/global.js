@@ -13,4 +13,11 @@ export const GlobalStyle = css`
 	a {
 		color:black;
 	}
+	ul, ol, li {
+		list-style-type: none;
+	}
+
+	button {
+		background: none;
+	}
 `;

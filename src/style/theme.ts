@@ -10,6 +10,7 @@ const colors = {
 
 const fontsize = {
     font18:18,
+    font16:16,
     font15:15
 }
 

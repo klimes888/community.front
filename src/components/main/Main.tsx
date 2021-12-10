@@ -5,6 +5,12 @@ import Aside from '../aside/Aside';
 
 // style
 import { bodyStyle } from '@/style/common/bodyStyle';
+import Header from '../header/Header';
+
+// components
+import SquareButton from '../buttons/squareButton';
+import Contents from '../slider/Contents';
+import HorizonScroll from '../slider/HorizonScroll';
 
 export default function Main() {
     const [data, setData] = useState(undefined);
@@ -22,28 +28,39 @@ export default function Main() {
     // useEffect(() => {
     //     fetch();
     // }, []);
+const scrollData = [
+  {index:0, thumbnail:'', title:'test', desc:'test2', date:'2020-10-10'}
+];
 
 	return (
 		<div css={bodyStyle}>
 			<div css={divideDic}>
 				<Aside />
-				<section css={asideLayout} >
-
+				<section css={bodyLayout} >
+          <Header />
+          <article>
+            <HorizonScroll data={scrollData}/>
+          </article>
 				</section>
 			</div>
 		</div>
 	)
 }
 
-const asideLayout = css`
-display: flex;
-width:360px;
-height:100%;
-`;
-
 const divideDic = css`
 display: flex;
-flex-direction: row;
+flex:1;
+`;
+
+const bodyLayout = css`
+display: flex;
+flex-direction: column;
+flex:1;
+`;
+
+
+const boyDescWrap = css`
+flex:1;
 `;
 
 
