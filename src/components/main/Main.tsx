@@ -38,7 +38,7 @@ const scrollData = [
 				<Aside />
 				<section css={bodyLayout} >
           <Header />
-          <article>
+          <article css={boyDescWrap}>
             <HorizonScroll data={scrollData}/>
           </article>
 				</section>
@@ -60,7 +60,6 @@ flex:1;
 
 
 const boyDescWrap = css`
-flex:1;
 `;
 
 

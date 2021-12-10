@@ -32,13 +32,14 @@ export default function Contents({ data }):JSX.Element {
   };
 
 const layoutStyle = css`
+margin: 0 0.5em;
 `;
 
 const layout = css`
 display: flex;
 flex-direction: column;
-width:13em;
-height:14em;
+width:14em;
+height:16em;
 border-radius: 1.5em;
 box-shadow: 0px 4px 10px 5px rgba(0,0,0,0.1);
 overflow: hidden;

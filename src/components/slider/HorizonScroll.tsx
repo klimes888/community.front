@@ -8,21 +8,17 @@ export default function HorizonScroll({ data }:props):JSX.Element {
   // ref
   const scrollWrap = useRef<HTMLDivElement>(null)
   const scroll = useRef<HTMLDivElement>(null)
-
-
-  const [currentUp, setCurrentUp] = useState(0);
   const [scrollMove, setScrollMove] = useState(0);
 
   // size
   const [wrapWidth, setWrapWidth] = useState(null);
   const [scrollWidth, setScrollWidth] = useState(null);
-  const [saveMove, setSaveMove] = useState(0);
 
   let isMouse = false
   let currentDistance = 0
   let saveSize = 0
   let diff = 0
-
+  let move = 0
 
   useEffect(() => {
     setWrapWidth(scrollWrap?.current?.offsetWidth);
@@ -37,19 +33,25 @@ export default function HorizonScroll({ data }:props):JSX.Element {
   const scrollMovehandler = (e) => {
     if(!isMouse) return;
     diff = currentDistance - e?.pageX;
-    setScrollMove(-diff + saveSize)
+    setScrollMove(-diff + saveSize);
+    move = -diff + saveSize
   }
 
   const scrollUpHandler = (e) => {
-    isMouse = false
-    // setSaveMove(-diff + saveMove);
-    saveSize += -diff
-
-    if(wrapWidth > scrollWidth){
+    isMouse = false;
+    if(wrapWidth > scrollWidth || -diff + saveSize > 0){
+      diff = 0
       saveSize = 0;
-      setScrollMove(0)
+      setScrollMove(0);
+
+    } else if (scrollWidth && scrollWidth < -move + 1000){
+      setScrollMove(saveSize);
+      return;
+    } else {
+
     }
-  }
+    saveSize += -diff
+  };
 
 
   useEffect(() => {
@@ -67,7 +69,7 @@ export default function HorizonScroll({ data }:props):JSX.Element {
 
   // console.log(scrollMove)
 
-  const arr = new Array(20).fill('a').map((d,i)=>++i)
+  const arr = new Array(30).fill('a').map((d,i)=>++i)
 
 
   return (
@@ -91,19 +93,19 @@ export default function HorizonScroll({ data }:props):JSX.Element {
   )
 }
 
-
 const layout = css`
   display: flex;
-  width:100vw;
+  width:calc(100vw - 18rem);
   height:auto;
-  background: red;
+  overflow: hidden;
+  @media (max-width: 800px) {
+    background: purple;
+      }
 `;
 
 const innerLayout = css`
 display: flex;
-flex:1;
 flex-direction: row;
 margin:0 1em;
-background: blue;
 flex-wrap: nowrap;
 `;
