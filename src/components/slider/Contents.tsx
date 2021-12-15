@@ -1,31 +1,80 @@
-import { css, jsx, Theme } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import React from 'react'
+import { Link, Route } from 'react-router-dom';
 
-export default function Contents({ data }):JSX.Element {
+type propsType = {
+  data:{
+    index:number,
+    thumbnail:string,
+    title:string,
+    desc:string,
+    date:string,
+    type:string,
+    route:string
+      }
+}
 
-  return (
-    <button css={layoutStyle}>
-        <div css={layout}>
-        <div css={layoutTop}></div>
+export default function Contents({ data }:propsType):JSX.Element {
+const {thumbnail, title, desc, date, type, route} = data;
+
+  const arr = [
+    {index:1, value:'title', text:title},
+    {index:2, value:'desc', text:desc},
+    {index:3, value:'date', text:date},
+  ];
+
+  const DivideJSX = ():JSX.Element => (
+    <div css={layoutStyle}>
+      <div css={layout}>
+        <div css={layoutTop}>
+          <div css={thumbnailWrap}>
+            <img css={thumbnailImage} src={thumbnail} />
+          </div>
+        </div>
         <div css={layBottom}>
           <div css={layBottomInner}>
-            <span css={theme => [titleText, themeStyle(theme, 'text')]}>안녕하세여ㅛ</span>
+            {
+              arr?.map(({text, value, index}) => (
+              <div key={index} css={textWrap}>
+                <span css={theme => [themeStyle(theme, value)]}>{text}</span>
+              </div>
+              ))
+            }
           </div>
         </div>
       </div>
-    </button>
-  )
+    </div>
+
+)
+// <Link to={{ pathname:`${route}`}} target="_blank"/>
+return (
+        <Link to={{ pathname:`${route}`}} target="_blank">
+          <DivideJSX />
+        </Link>
+      )
 }
 
   // common style
   const themeStyle = (theme:Theme, type:string):{} => {
     switch (type) {
-      case 'text':
+      case 'title':
         return {
                   color:theme.colors.blue500,
-                  fontSize:theme.fontsize.font15,
+                  fontSize:theme.fontsize.font16,
                   fontWeigth:theme.fontweight.font700
-                }
+                };
+      case 'desc':
+        return {
+                  color:theme.colors.blue500,
+                  fontSize:theme.fontsize.font14,
+                  fontWeigth:theme.fontweight.font300
+                };
+      case 'date':
+        return {
+                  color:theme.colors.blue500,
+                  fontSize:theme.fontsize.font12,
+                  fontWeigth:theme.fontweight.font300
+                };
       default:
         break;
     }
@@ -33,6 +82,8 @@ export default function Contents({ data }):JSX.Element {
 
 const layoutStyle = css`
 margin: 0 0.5em;
+cursor: pointer;
+user-select: none;
 `;
 
 const layout = css`
@@ -46,7 +97,7 @@ overflow: hidden;
 `;
 
 const layoutTop = css`
-flex:2;
+flex:3;
 `;
 
 const layBottom = css`
@@ -56,9 +107,19 @@ background: #2222;
 
 const layBottomInner = css`
 flex:1;
-padding:1em;
+flex-direction: column;
+padding:0.6em 1em;
 `;
 
-const titleText = css`
-font
+const textWrap = css`
+margin:0.2em 0;
+`;
+
+// image
+const thumbnailWrap = css`
+
+`;
+
+const thumbnailImage = css`
+
 `;

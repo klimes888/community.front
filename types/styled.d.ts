@@ -14,7 +14,9 @@ declare module '@emotion/react' {
       fontsize: {
         font18:number,
         font16:number,
-        font15:number
+        font15:number,
+        font14:number,
+        font12:number
       };
 
       fontweight: {

@@ -3,8 +3,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { props } from 'types/slider';
 import Contents from './Contents';
 
-
 export default function HorizonScroll({ data }:props):JSX.Element {
+
   // ref
   const scrollWrap = useRef<HTMLDivElement>(null)
   const scroll = useRef<HTMLDivElement>(null)
@@ -47,9 +47,11 @@ export default function HorizonScroll({ data }:props):JSX.Element {
     } else if (scrollWidth && scrollWidth < -move + 1000){
       setScrollMove(saveSize);
       return;
+
     } else {
 
-    }
+    };
+
     saveSize += -diff
   };
 
@@ -67,10 +69,7 @@ export default function HorizonScroll({ data }:props):JSX.Element {
 
   }, [isMouse, wrapWidth, scrollWidth])
 
-  // console.log(scrollMove)
-
-  const arr = new Array(30).fill('a').map((d,i)=>++i)
-
+  // const arr = new Array(30).fill('a').map((d,i)=>++i)
 
   return (
     <div
@@ -82,7 +81,7 @@ export default function HorizonScroll({ data }:props):JSX.Element {
         css={[innerLayout, {transform:`translateX(${scrollMove}px)`}]}
       >
         {
-          arr?.map((_data, index) =>
+          data?.map((_data, index) =>
             <React.Fragment key={index}>
               <Contents data={_data} />
             </React.Fragment>
@@ -97,9 +96,7 @@ const layout = css`
   display: flex;
   width:calc(100vw - 18rem);
   height:auto;
-  overflow: hidden;
   @media (max-width: 800px) {
-    background: purple;
       }
 `;
 

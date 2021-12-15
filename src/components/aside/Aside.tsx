@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {css, Theme} from '@emotion/react';
 import styled from "@emotion/styled"
 import { Link } from 'react-router-dom';
 
 export default function Aside() {
+  const [toggle, setToggle] = useState(false);
+
 
   const linkList = [
     {index:0, title:'Home', value:'/'},
     {index:1, title:'Portfolio', value:'/portfolio'},
     {index:2, title:'Community', value:''},
-    {index:3, title:'Connect', value:''}
+    {index:3, title:'Contact', value:''}
   ]
 
-
-
   return (
-    <aside css={theme => ([themeStyle(theme, 'bar'), bodyLayout])} >
+    <aside css={theme => ([themeStyle(theme, 'bar', toggle), bodyLayout])} >
       <article css={bodyTop}>
 
       </article>
@@ -24,7 +24,7 @@ export default function Aside() {
           {
             linkList?.map(({ index, title, value }) =>
               <TextWrap to={value} key={index} >
-                <li css={theme => [themeStyle(theme, 'text'), texttyle]}>
+                <li css={theme => [themeStyle(theme, 'text', ''), textStyle]}>
                   { title }
                 </li>
               </TextWrap>
@@ -38,11 +38,13 @@ export default function Aside() {
 };
 
   // common style
-  const themeStyle = (theme:Theme, type:string):{} => {
+  const themeStyle = (theme:Theme, type:string, props:boolean | string):{} => {
+
     switch (type) {
       case 'bar':
         return {
-                  background:theme.colors.blue500
+                  background:theme.colors.blue500,
+                  width:props ? `2rem` : `18rem`
                 }
       case 'text':
         return {
@@ -59,7 +61,6 @@ export default function Aside() {
 const bodyLayout = css`
 display: flex;
 flex-direction: column;
-width:18.5rem;
 height:100vh;
 z-index: 999;
 `;
@@ -82,5 +83,5 @@ padding:0.5em;
 margin: 0.5em 0;
 `;
 
-const texttyle = css`
+const textStyle = css`
 `;

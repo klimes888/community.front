@@ -11,7 +11,9 @@ const colors = {
 const fontsize = {
     font18:18,
     font16:16,
-    font15:15
+    font15:15,
+    font14:14,
+    font12:12
 }
 
 const fontweight = {

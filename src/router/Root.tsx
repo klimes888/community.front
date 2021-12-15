@@ -11,6 +11,7 @@ import MainPage from '@/pages/page_Main/Main';
 import Setting from '@/pages/page_Setting/Setting';
 import SignupPage from '@/pages/page_Signup/SignupPage';
 import Portfolio from '@/pages/page_Portfolio/Portfolio';
+import MainStore from '@/store/mainStore';
 
 const queryClient = new QueryClient();
 const Root: React.FC = () => {
@@ -27,15 +28,17 @@ const Root: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme} >
       <Global styles={GlobalStyle} />
-      <BrowserRouter>
-        <Switch>
-          {
-            RouteArr?.map(({ index, path, component}) => (
-              <Route path={path} exact component={component} key={index} />
-            ))
-          }
-        </Switch>
-      </BrowserRouter>
+      <MainStore>
+        <BrowserRouter>
+          <Switch>
+            {
+              RouteArr?.map(({ index, path, component}) => (
+                <Route path={path} exact component={component} key={index} />
+              ))
+            }
+          </Switch>
+        </BrowserRouter>
+      </MainStore>
       </ThemeProvider>
     </QueryClientProvider>
   );

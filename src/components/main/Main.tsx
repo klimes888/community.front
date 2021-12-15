@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import {css} from '@emotion/react';
 import axios from 'axios';
 import Aside from '../aside/Aside';
+// json
+import mainData from '@/data/main.json'
 
 // style
 import { bodyStyle } from '@/style/common/bodyStyle';
@@ -28,9 +30,6 @@ export default function Main() {
     // useEffect(() => {
     //     fetch();
     // }, []);
-const scrollData = [
-  {index:0, thumbnail:'', title:'test', desc:'test2', date:'2020-10-10'}
-];
 
 	return (
 		<div css={bodyStyle}>
@@ -39,7 +38,12 @@ const scrollData = [
 				<section css={bodyLayout} >
           <Header />
           <article css={boyDescWrap}>
-            <HorizonScroll data={scrollData}/>
+            <div css={bodyInner} >
+              <HorizonScroll data={mainData}/>
+              <div css={lineWrapStyle} >
+                <div css={lineStyle} />
+              </div>
+            </div>
           </article>
 				</section>
 			</div>
@@ -60,6 +64,26 @@ flex:1;
 
 
 const boyDescWrap = css`
+width:100%;
+`;
+
+const bodyInner = css`
+display: flex;
+flex-direction: column;
+width:100%;
+`;
+
+const lineWrapStyle = css`
+display: flex;
+flex:1;
+margin:2rem 0em;
+`;
+
+const lineStyle = css`
+width:100%;
+height:0.1em;
+background: red;
+margin:0 1em;
 `;
 
 
