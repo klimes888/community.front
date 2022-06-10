@@ -6,6 +6,5 @@ export const bodyStyle = (props) => {
 
 const mainStyle = css`
 display: flex;
-width:100%;
-height:100%;
+width:100vw;
 `;

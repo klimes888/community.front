@@ -5,24 +5,24 @@ const common = require('./webpack.common.js');
 
 
 module.exports = merge(common, {
-  mode:"development",
-  devtool:'inline-source-map',
+  mode: 'development',
+  devtool: 'inline-source-map',
 
   devServer: {
     proxy: {
-      "/api": {
-        contentBase: path.join(__dirname, "dist"),
-        publicPath: "/",
+      '/api': {
+        // contentBase: path.join(__dirname, 'dist'),
+        publicPath: '/',
         // target: `${process.env.COMMUNITY_API}`, // 요청 url 앞에 target을 붙여주기, ex) http://localhost:8080/api/rest/myInfo
         target: `http://localhost:3000`, // 요청 url 앞에 target을 붙여주기, ex) http://localhost:8080/api/rest/myInfo
-        pathRewrite: {"/api": "/"}, // /api에 해당하는 url을 없애기, ex http://localhost:8080/rest/myInfo
-        historyApiFallback:true,
+        pathRewrite: { '/api': '/' }, // /api에 해당하는 url을 없애기, ex http://localhost:8080/rest/myInfo
         changeOrigin: true,
-      }
+      },
     },
     static: {
       directory: path.join(__dirname, 'public'),
     },
-    port:4000,
+    historyApiFallback: true,
+    port: 4000,
   },
 });

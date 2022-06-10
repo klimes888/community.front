@@ -44,13 +44,14 @@ const {thumbnail, title, desc, date, type, route} = data;
         </div>
       </div>
     </div>
-
 )
-// <Link to={{ pathname:`${route}`}} target="_blank"/>
+
 return (
-        <Link to={{ pathname:`${route}`}} target="_blank">
-          <DivideJSX />
-        </Link>
+        <div css={preventDrag}>
+          <Link to={{ pathname:`${route}`}} target={type === 'href' ? '_blank' : null}>
+            <DivideJSX />
+          </Link>
+        </div>
       )
 }
 
@@ -80,10 +81,13 @@ return (
     }
   };
 
+  const preventDrag = css`
+  user-select:none;
+  `;
+
 const layoutStyle = css`
 margin: 0 0.5em;
 cursor: pointer;
-user-select: none;
 `;
 
 const layout = css`
@@ -91,7 +95,7 @@ display: flex;
 flex-direction: column;
 width:14em;
 height:16em;
-border-radius: 1.5em;
+border-radius: 1em;
 box-shadow: 0px 4px 10px 5px rgba(0,0,0,0.1);
 overflow: hidden;
 `;

@@ -22,8 +22,8 @@ export default function SquareButton({
 
 const buttonStyle = css`
   display: flex;
-  width:2em;
-  height:2em;
+  width:2.5em;
+  height:2.5em;
   border-radius:0.4em;
   overflow: hidden;
   cursor: pointer;
