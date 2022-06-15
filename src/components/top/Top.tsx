@@ -75,6 +75,7 @@ const themeStyle = (theme: Theme, type: string) => {
 const layout = css`
   position: absolute;
   display: flex;
+  height: auto;
   z-index: 999;
 `;
 
