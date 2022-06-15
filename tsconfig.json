@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -19,8 +19,9 @@
     "outDir": "./dist/",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    },
+      "@/*": ["./src/*"],
+      "@images*": ["./src/assets/images/*"]
+    }
   },
   "typeRoots": ["node_modules/@types", "@type"],
   "exclude": [
@@ -32,4 +33,4 @@
     "./dist/**/*"
   ],
   "includes": ["./**/*", "@type", "src"]
-  }
+}
