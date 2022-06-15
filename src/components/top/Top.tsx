@@ -31,7 +31,7 @@ export default function Top() {
   }, [pathname]);
 
   return (
-    <nav css={layout}>
+    <div css={layout}>
       <section css={theme => themeStyle(theme, 'layout')}>
         <div css={tabInner}>
           {linkList?.map(({ index, title, value, exact }) => (
@@ -50,7 +50,7 @@ export default function Top() {
         </div>
         <MoveLine position={currentLayoutSize} />
       </section>
-    </nav>
+    </div>
   );
 }
 
@@ -73,19 +73,21 @@ const themeStyle = (theme: Theme, type: string) => {
 };
 
 const layout = css`
-  width: 100%;
+  position: absolute;
+  display: flex;
+  z-index: 999;
 `;
 
 const layoutInner = css`
   display: flex;
-  margin: 0.3em 0;
+  margin-top: 0.5em;
   flex-direction: column;
 `;
 
 const tabInner = css`
   display: flex;
-  width: 100%;
-  padding: 0.5em 0.5em;
+  padding: 0.6em 0.5em;
+  margin-left: 0.8em;
   flex-direction: row;
 `;
 
@@ -93,15 +95,13 @@ const MoveLine = styled.span<{ position: { x: number; width: number } }>`
   width: ${({ position }) => position.width + 'px'};
   display: inline-block;
   height: 1px;
-  background: blue;
+  background: #111111;
   transform: translateX(${({ position }) => position?.x + 'px'});
   transition: transform 0.3s cubic-bezier(0.27, 0.84, 0.69, 1),
     width 0.3s cubic-bezier(0.27, 0.84, 0.69, 1);
 `;
 
 const NavLinkStyle = styled(NavLink)`
-  display: flex;
-  flex-direction: column;
   align-items: center;
   padding: 0.4em 0.4em;
   margin: 0 0.2em;

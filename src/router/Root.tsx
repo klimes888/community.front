@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Global, ThemeProvider } from '@emotion/react';
+import { css, Global, ThemeProvider } from '@emotion/react';
 import { GlobalStyle } from '@/style/global';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
@@ -14,6 +14,9 @@ import Portfolio from '@/pages/page_Portfolio/Portfolio';
 import MainStore from '@/store/mainStore';
 import Landing from '@/pages/Landing/Landing';
 import Contact from '@/pages/Page_Contact/Contact';
+
+// style
+import { bodyStyle } from '@/style/common/bodyStyle';
 
 // NAV
 import Top from '../components/top/Top';
@@ -36,7 +39,7 @@ const Root: React.FC = () => {
         <Global styles={GlobalStyle} />
         <MainStore>
           <BrowserRouter>
-            <div>
+            <div css={[bodyStyle(), layout]}>
               <Top />
               <Switch>
                 {RouteArr?.map(router => (
@@ -50,5 +53,11 @@ const Root: React.FC = () => {
     </QueryClientProvider>
   );
 };
+
+const layout = css`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
 
 export default Root;

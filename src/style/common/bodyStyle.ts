@@ -1,10 +1,10 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
-export const bodyStyle = (props) => {
-  return [mainStyle]
+export const bodyStyle = () => {
+  return [mainStyle];
 };
 
 const mainStyle = css`
-display: flex;
-width:100vw;
+  display: flex;
+  flex: 1;
 `;
