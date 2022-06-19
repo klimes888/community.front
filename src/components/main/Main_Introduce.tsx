@@ -78,7 +78,7 @@ const line4 = css`
 const layoutStyle = css`
   display: flex;
   flex: 1;
-  flex-direction: row;
+  margin-bottom: 3em;
 `;
 
 const flexWrap = css`
@@ -110,28 +110,28 @@ const imageInkWrap = css`
   display: inline-block;
   background: center center no-repeat;
   object-fit: contain;
-  width: 42em;
-  height: 42em;
+  width: 48em;
+  height: auto;
 `;
 
 const imageBrushWrap = css`
   position: absolute;
-  bottom: -5em;
-  left: -6em;
-  width: 40em;
+  bottom: -7em;
+  left: -8em;
+  width: 44em;
   height: auto;
   background: center center no-repeat;
   object-fit: contain;
   z-index: 9;
-  transform: rotate(-10deg);
+  transform: rotate(-8deg);
 `;
 
 const image = css`
   display: inline-block;
   background: center center no-repeat;
   object-fit: contain;
-  width: 34em;
-  height: 34em;
+  width: 35em;
+  height: 35em;
   transform: scaleX(-1);
   filter: brightness(1.2) grayscale(70%);
   z-index: 1;
@@ -153,7 +153,7 @@ const textBox = css`
 
 const textBoxInner = css`
   height: auto;
-  padding-left: 2em;
+  padding-left: 4.5em;
 `;
 
 const title = css`

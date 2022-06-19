@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 
 // json
-import mainData from '@/data/main.json';
 
 // style
 import { bodyStyle } from '@/style/common/bodyStyle';
-import Header from '../header/Header';
 
 // components
 import MainIntroduce from './Main_Introduce';
-import HorizonScroll from '../slider/HorizonScroll';
+import MainParallels from './Main_Parallels';
 import Arrow from '@/components/UI/Arrow';
 
 export default function Main() {
@@ -33,9 +31,12 @@ export default function Main() {
   return (
     <div css={bodyStyle}>
       <div css={divideDic}>
-        <section css={bodyLayout}>
+        <div css={secetionDivide}>
           <MainIntroduce />
-        </section>
+        </div>
+        <div css={secetionDivide}>
+          <MainParallels />
+        </div>
         <button css={textButton}>
           <span css={spanText}>Next Scroll</span>
           <Arrow weight={1} />
@@ -46,16 +47,13 @@ export default function Main() {
 }
 
 const divideDic = css`
-  position: relative;
-  display: flex;
+  display: block;
   width: 100%;
 `;
 
-const bodyLayout = css`
-  position: relative;
+const secetionDivide = css`
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  flex: 1;
 `;
 
 // text
@@ -64,8 +62,8 @@ const bodyLayout = css`
 const textButton = css`
   position: fixed;
   display: flex;
-  bottom: 11em;
-  right: 0.8em;
+  bottom: 12em;
+  right: 1.5em;
   height: auto;
   justify-content: center;
   align-items: center;
