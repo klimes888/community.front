@@ -60,7 +60,7 @@ const themeStyle = (theme: Theme, type: string) => {
     case 'text':
       return {
         color: theme.colors.black000,
-        fontSize: theme.fontsize.font16,
+        fontSize: '0.9vw',
       };
     case 'layout':
       return {
@@ -76,7 +76,7 @@ const layout = css`
   position: absolute;
   display: flex;
   height: auto;
-  z-index: 999;
+  z-index: 9;
 `;
 
 const layoutInner = css`

@@ -34,51 +34,9 @@ export default function MainIntroduce() {
   );
 }
 
-const commonStyle = index => {
-  switch (index) {
-    case 1:
-      return [line1, common];
-    case 2:
-      return [line2, common];
-    case 3:
-      return [line3, common];
-    case 4:
-      return [line4, common];
-  }
-};
-
-const common = css`
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  border: 0.1em solid #333333;
-`;
-
-const line1 = css`
-  top: 0.2em;
-  border-radius: 8% 92% 69% 31% / 66% 55% 45% 34%;
-`;
-
-const line2 = css`
-  top: 0.4em;
-  border-radius: 47% 53% 51% 49% / 74% 41% 59% 26%;
-`;
-
-const line3 = css`
-  top: 0.2em;
-  border-radius: 37% 63% 26% 74% / 95% 57% 43% 5%;
-`;
-
-const line4 = css`
-  top: 0.4em;
-  border-radius: 82% 18% 12% 88% / 36% 57% 43% 64%;
-`;
-
 const layoutStyle = css`
   display: flex;
   flex: 1;
-  margin-bottom: 3em;
 `;
 
 const flexWrap = css`
@@ -90,10 +48,11 @@ const flexWrap = css`
 `;
 
 const imageWrap = css`
-  position: relative;
   display: flex;
-  width: 24em;
-  height: 24em;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
 `;
 
 const imageWrapInner = css`
@@ -101,37 +60,35 @@ const imageWrapInner = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
 `;
 
 const imageInkWrap = css`
   position: absolute;
-  display: inline-block;
   background: center center no-repeat;
-  object-fit: contain;
-  width: 48em;
+  width: 100%;
   height: auto;
+  transform: scale(1.2);
 `;
 
 const imageBrushWrap = css`
   position: absolute;
-  bottom: -7em;
-  left: -8em;
-  width: 44em;
+  bottom: -3em;
+  left: -2em;
+  width: 100%;
   height: auto;
   background: center center no-repeat;
   object-fit: contain;
-  z-index: 9;
-  transform: rotate(-8deg);
+  z-index: 3;
+  transform: rotate(-10deg);
 `;
 
 const image = css`
   display: inline-block;
   background: center center no-repeat;
   object-fit: contain;
-  width: 35em;
-  height: 35em;
+  width: 75%;
   transform: scaleX(-1);
   filter: brightness(1.2) grayscale(70%);
   z-index: 1;
@@ -157,19 +114,19 @@ const textBoxInner = css`
 `;
 
 const title = css`
-  font-size: 6em;
+  font-size: 6vw;
   font-weight: 900;
   height: auto;
 `;
 
 const subTitle = css`
-  font-size: 6em;
+  font-size: 5vw;
   font-weight: 400;
   height: auto;
 `;
 
 const mynameIs = css`
-  font-size: 5em;
+  font-size: 5vw;
   font-weight: 100;
   height: auto;
 `;
