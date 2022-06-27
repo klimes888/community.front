@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { css } from '@emotion/react';
 
 // json
@@ -10,34 +10,28 @@ import { bodyStyle } from '@/style/common/bodyStyle';
 import MainIntroduce from './Main_Introduce';
 import MainParallels from './Main_Parallels';
 import Arrow from '@/components/UI/Arrow';
+import addAnimation from '@/hooks/addAnimation';
+
+// hooks
+import IntersectionObserverHook from '@/hooks/IntersectionObserverHook';
 
 export default function Main() {
-  const [data, setData] = useState(undefined);
-  // const fetch = () => {
-  //     axios({
-  //         method:'get',
-  //         url:`${process.env.COMMUNITY_API}api`,
-  //         headers:{
-  //             "Access-Control-Allow-Origin": "*",
-  //         }
-  //     }).then((test) => setData(test))
-  //     .catch( err => console.log(err))
-  // }
+  const parallel = useRef<HTMLDivElement>(null);
+  const observe = IntersectionObserverHook({
+    root: parallel,
+  });
 
-  // useEffect(() => {
-  //     fetch();
-  // }, []);
-
+  const { ref } = addAnimation();
   return (
     <div css={bodyStyle}>
       <div css={divideDic}>
         <div css={secetionDivide}>
           <MainIntroduce />
         </div>
-        <div css={secetionDivide}>
+        <div css={secetionDivide} ref={parallel}>
           <MainParallels />
         </div>
-        <button css={textButton}>
+        <button css={textButton} ref={ref}>
           <span css={spanText}>Next Scroll</span>
           <Arrow weight={1} />
         </button>
