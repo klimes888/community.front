@@ -60,8 +60,8 @@ const imageWrapInner = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  height: 70%;
+  width: 40vw;
+  height: 40vw;
 `;
 
 const imageInkWrap = css`

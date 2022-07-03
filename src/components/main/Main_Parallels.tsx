@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { MutableRefObject } from 'react';
 import { css } from '@emotion/react';
 
-export default function MainParallels() {
-  return <div css={layout}></div>;
+type Props = {
+  _ref: MutableRefObject<HTMLDivElement> | null;
+};
+export default function MainParallels({ _ref }: Props) {
+  return <div css={layout} ref={_ref}></div>;
 }
 
 const layout = css`

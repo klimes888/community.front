@@ -1,13 +1,14 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useState } from 'react';
 
 export default function addAnimation() {
+  const [trigger, setTrigger] = useState(false);
   const targetDom = useRef();
 
   const handleScroll = useCallback(([entry]) => {
-    const { current } = targetDom;
-
+    // const { current } = targetDom;
     if (entry.isIntersecting) {
       // 원하는 이벤트를 추가 할 것
+      setTrigger(true);
     }
   }, []);
   useEffect(() => {
@@ -24,5 +25,6 @@ export default function addAnimation() {
 
   return {
     ref: targetDom,
+    trigger,
   };
 }

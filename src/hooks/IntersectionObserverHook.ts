@@ -11,7 +11,6 @@ export default function IntersectionObserverHook({
     const observer = new IntersectionObserver(
       entres => {
         const [entry] = entres;
-        console.log('observe', entres);
         setObserResult(entry.isIntersecting);
       },
       {

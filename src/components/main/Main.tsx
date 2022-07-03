@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { css } from '@emotion/react';
 
 // json
@@ -9,6 +9,7 @@ import { bodyStyle } from '@/style/common/bodyStyle';
 // components
 import MainIntroduce from './Main_Introduce';
 import MainParallels from './Main_Parallels';
+import MainWhoIsMe from './Main_WhoIsMe';
 import Arrow from '@/components/UI/Arrow';
 import addAnimation from '@/hooks/addAnimation';
 
@@ -16,29 +17,92 @@ import addAnimation from '@/hooks/addAnimation';
 import IntersectionObserverHook from '@/hooks/IntersectionObserverHook';
 
 export default function Main() {
+  const { ref, trigger } = addAnimation();
   const parallel = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const observe = IntersectionObserverHook({
     root: parallel,
+    threshold: 0.35,
   });
+  console.log('trigger>>', trigger);
+  // state
+  const [scrollHeight, setScrollHeight] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [nextScrollBtn, setNextScrollBtn] = useState('#ffffff');
 
-  const { ref } = addAnimation();
+  // static
+  const windowHiehgt = useMemo(() => document.documentElement.clientHeight, []);
+  const handleScroll = () => {
+    setScrollPosition(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    // view current height
+    const height = document.documentElement.scrollHeight;
+    setScrollHeight(height);
+
+    // view current scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!parallel.current) return;
+    const parallelHeight = parallel.current.clientHeight;
+    const buttonRefHeight = buttonRef.current.clientWidth;
+    if (scrollPosition >= buttonRefHeight) {
+      setNextScrollBtn('#ffffff');
+    } else if (buttonRefHeight + scrollPosition - 80 <= buttonRefHeight) {
+      setNextScrollBtn('#001d40');
+    }
+  }, [parallel, scrollPosition]);
+
   return (
     <div css={bodyStyle}>
       <div css={divideDic}>
+        {/* 메인 소개 */}
         <div css={secetionDivide}>
           <MainIntroduce />
         </div>
-        <div css={secetionDivide} ref={parallel}>
-          <MainParallels />
+        {/* 개인 소개글(경력 위주) */}
+        <div css={secetionDivide} ref={ref}>
+          <MainWhoIsMe />
         </div>
-        <button css={textButton} ref={ref}>
-          <span css={spanText}>Next Scroll</span>
-          <Arrow weight={1} />
+        {/* <div css={secetionDivide}>
+          <MainParallels _ref={parallel} />
+        </div> */}
+        {/* 개발 스택 */}
+        {/* 포트폴리오 소개 */}
+        {/* Contact */}
+        <button css={textButton} ref={buttonRef}>
+          <span
+            css={() => [
+              styleManger({ type: 'scroll', value: nextScrollBtn }),
+              spanText,
+            ]}
+          >
+            Next Scroll
+          </span>
+          <Arrow weight={1} color={nextScrollBtn} />
         </button>
       </div>
     </div>
   );
 }
+
+const styleManger = ({ type, value }) => {
+  switch (type) {
+    case 'scroll':
+      return {
+        color: value,
+      };
+
+    default:
+      break;
+  }
+};
 
 const divideDic = css`
   display: block;
