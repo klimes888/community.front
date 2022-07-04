@@ -6,14 +6,14 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { theme } from '@/style/theme';
 
 // pages
-import LoginPage from '@/pages/page_Login/LoginPage';
+// import LoginPage from '@/pages/page_Login/LoginPage';
 import MainPage from '@/pages/page_Main/Main';
-import Setting from '@/pages/page_Setting/Setting';
-import SignupPage from '@/pages/page_Signup/SignupPage';
+// import Setting from '@/pages/page_Setting/Setting';
+// import SignupPage from '@/pages/page_Signup/SignupPage';
 import Portfolio from '@/pages/page_Portfolio/Portfolio';
-import MainStore from '@/store/mainStore';
-import Landing from '@/pages/Landing/Landing';
-import Contact from '@/pages/Page_Contact/Contact';
+// import MainStore from '@/store/mainStore';
+// import Landing from '@/pages/Landing/Landing';
+// import Contact from '@/pages/Page_Contact/Contact';
 
 // style
 import { bodyStyle } from '@/style/common/bodyStyle';
@@ -37,18 +37,16 @@ const Root: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Global styles={GlobalStyle} />
-        <MainStore>
-          <BrowserRouter>
-            <div css={[bodyStyle(), layout]}>
-              <Top />
-              <Switch>
-                {RouteArr?.map(router => (
-                  <Route {...router} key={router?.key} />
-                ))}
-              </Switch>
-            </div>
-          </BrowserRouter>
-        </MainStore>
+        <BrowserRouter>
+          <div css={[bodyStyle(), layout]}>
+            <Top />
+            <Switch>
+              {RouteArr?.map(router => (
+                <Route {...router} key={router?.key} />
+              ))}
+            </Switch>
+          </div>
+        </BrowserRouter>
       </ThemeProvider>
     </QueryClientProvider>
   );
