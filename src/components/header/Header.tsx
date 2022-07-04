@@ -1,24 +1,24 @@
 import React from 'react';
 import { css, Theme } from '@emotion/react';
-import SquareButton from '../buttons/squareButton';
+// import SquareButton from '../buttons/squareButton';
 
 export default function Header() {
-  const moreButtonHandler = (type: string) => {
-    console.log(type);
-  };
+  // const moreButtonHandler = (type: string) => {
+  //   console.log(type);
+  // };
 
   return (
     <header css={layoutStyle}>
       <div css={layoutInner}>
         <div css={buttonWrap}>
-          <SquareButton
+          {/* <SquareButton
             onClick={() => moreButtonHandler('more')}
             content={
               <div css={theme => [commonTheme(theme, 'wrap'), hamburgerWrap]}>
                 <div css={theme => [commonTheme(theme, 'inner'), hamburger]} />
               </div>
             }
-          />
+          /> */}
         </div>
       </div>
     </header>
