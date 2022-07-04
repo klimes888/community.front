@@ -25,12 +25,12 @@ const queryClient = new QueryClient();
 const Root: React.FC = () => {
   const RouteArr = [
     { key: 0, path: '/', component: MainPage, exact: true },
-    { key: 1, path: '/login', component: LoginPage },
-    { key: 2, path: '/portfolio/', component: Portfolio },
-    { key: 3, path: '/signup', component: SignupPage },
-    { key: 4, path: '/setting', component: Setting },
-    { key: 5, path: '/randing', component: Landing },
-    { key: 6, path: '/contact/', component: Contact },
+    // { key: 1, path: '/login', component: LoginPage },
+    { key: 2, path: '/portfolio', component: Portfolio },
+    // { key: 3, path: '/signup', component: SignupPage },
+    // { key: 4, path: '/setting', component: Setting },
+    // { key: 5, path: '/randing', component: Landing },
+    // { key: 6, path: '/contact/', component: Contact },
   ];
 
   return (

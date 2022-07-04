@@ -3,7 +3,7 @@ import { Theme } from '@emotion/react';
 const COLORS = {
   white: '#ffffff',
   black000: '#111111',
-  blue500: '#232f34',
+  blue500: '#001d40',
   blue400: '#344955',
   blue300: '#4a6572',
   orange300: '#f9aa33',
