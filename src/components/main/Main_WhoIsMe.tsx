@@ -13,7 +13,12 @@ import emotionLogo from '@/assets/langs/emotion.png';
 import mobXLogo from '@/assets/langs/mobxlogo.png';
 import rn from '@/assets/langs/rnlogo.png';
 
-export default function MainWhoIsMe() {
+// type
+type Props = {
+  trigger: boolean;
+};
+
+export default function MainWhoIsMe({ trigger }: Props) {
   // grid 형식의 insta segment 포트폴리오
   // 화면 전체 흐림 효과와 텍스트 효과
   const designArr = [
@@ -81,7 +86,7 @@ export default function MainWhoIsMe() {
       text: '',
     },
     {
-      color: '',
+      color: '#ffffff',
       image: <img css={generalImages} src={mobXLogo} />,
       spanColumn: '',
       spanRow: '',
@@ -108,6 +113,8 @@ export default function MainWhoIsMe() {
               spanRow={spanRow}
               color={color}
               type={type}
+              trigger={trigger}
+              index={index}
             >
               {image}
               <span css={font}>{text}</span>
@@ -129,6 +136,7 @@ const gridLayout = css`
   padding: 0.5em;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-auto-rows: minmax(3em, auto);
+  transform: translateY(25px);
 `;
 
 const font = css`
@@ -153,11 +161,17 @@ const GridItem = styled.div<{
   spanRow: string;
   color: string;
   type: string;
+  trigger: boolean;
+  index: number;
 }>`
   display: grid;
   place-content: center;
   background-color: ${({ color }) => color || '#ffffff'};
   grid-column: ${({ spanColumn }) => spanColumn};
   grid-row: ${({ spanRow }) => spanRow};
-  ${({ type }) => type && 'border:1px solid #ED681B'}
+  border: 1px solid ${({ type }) => (type && '#ED681B') || '#ffffff'};
+  opacity: ${({ trigger }) => (trigger ? 1 : 0)};
+  transform: translateY(${({ trigger }) => (trigger ? -25 + 'px' : 0)});
+  transition: transform 0.5s ease-in-out ${({ index }) => index * 0.1 + 's'},
+    opacity 0.3s ease ${({ index }) => index * 0.1 + 's'};
 `;

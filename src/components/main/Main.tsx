@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 // json
 
@@ -17,14 +18,14 @@ import addAnimation from '@/hooks/addAnimation';
 import IntersectionObserverHook from '@/hooks/IntersectionObserverHook';
 
 export default function Main() {
-  const { ref, trigger } = addAnimation();
+  const { ref, trigger } = addAnimation({ threshold: 0.7 });
   const parallel = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const observe = IntersectionObserverHook({
     root: parallel,
     threshold: 0.35,
   });
-  console.log('trigger>>', trigger);
+
   // state
   const [scrollHeight, setScrollHeight] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -67,9 +68,9 @@ export default function Main() {
           <MainIntroduce />
         </div>
         {/* 개인 소개글(경력 위주) */}
-        <div css={secetionDivide} ref={ref}>
-          <MainWhoIsMe />
-        </div>
+        <IntroMyselfDiv ref={ref} trigger={trigger}>
+          <MainWhoIsMe trigger={trigger} />
+        </IntroMyselfDiv>
         {/* <div css={secetionDivide}>
           <MainParallels _ref={parallel} />
         </div> */}
@@ -112,6 +113,14 @@ const divideDic = css`
 const secetionDivide = css`
   display: flex;
   flex: 1;
+`;
+
+const IntroMyselfDiv = styled.div<{ trigger: boolean }>`
+  display: flex;
+  flex: 1;
+  opacity: 1;
+  /* opacity: ${({ trigger }) => (trigger ? 1 : 0)}; */
+  /* transition: opacity 0.5s ease 0s; */
 `;
 
 // text
