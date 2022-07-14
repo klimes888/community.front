@@ -21,6 +21,7 @@ export default function Main() {
   const { ref, trigger } = addAnimation({ threshold: 0.7 });
   const parallel = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const parallelsRef = useRef<HTMLDivElement>(null);
   const observe = IntersectionObserverHook({
     root: parallel,
     threshold: 0.35,
@@ -30,17 +31,18 @@ export default function Main() {
   const [scrollHeight, setScrollHeight] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [nextScrollBtn, setNextScrollBtn] = useState('#ffffff');
+  const [paralelPosition, setParalelPosition] = useState(0);
 
   // static
   const windowHiehgt = useMemo(() => document.documentElement.clientHeight, []);
   const handleScroll = () => {
     setScrollPosition(window.pageYOffset);
   };
-
   useEffect(() => {
     // view current height
     const height = document.documentElement.scrollHeight;
     setScrollHeight(height);
+    setParalelPosition(parallelsRef.current.offsetTop);
 
     // view current scroll
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -62,6 +64,7 @@ export default function Main() {
 
   return (
     <div css={bodyStyle}>
+      <div css={test} />
       <div css={divideDic}>
         {/* 메인 소개 */}
         <div css={secetionDivide}>
@@ -71,9 +74,13 @@ export default function Main() {
         <IntroMyselfDiv ref={ref} trigger={trigger}>
           <MainWhoIsMe trigger={trigger} />
         </IntroMyselfDiv>
-        {/* <div css={secetionDivide}>
-          <MainParallels _ref={parallel} />
-        </div> */}
+        <div css={secetionDivide} ref={parallelsRef}>
+          <MainParallels
+            _ref={parallel}
+            position={paralelPosition}
+            scrollPosition={scrollPosition}
+          />
+        </div>
         {/* 개발 스택 */}
         {/* 포트폴리오 소개 */}
         {/* Contact */}
@@ -104,6 +111,14 @@ const styleManger = ({ type, value }) => {
       break;
   }
 };
+const test = css`
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+`;
 
 const divideDic = css`
   display: block;

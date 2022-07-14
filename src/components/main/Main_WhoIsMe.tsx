@@ -62,7 +62,7 @@ export default function MainWhoIsMe({ trigger }: Props) {
       image: '',
       spanColumn: '4 / span 2',
       spanRow: '',
-      text: '',
+      text: 'All of Frontend',
     },
     {
       color: '#F9D4C9',
@@ -136,7 +136,7 @@ const gridLayout = css`
   padding: 0.5em;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-auto-rows: minmax(3em, auto);
-  transform: translateY(25px);
+  /* transform: translateY(25px); */
 `;
 
 const font = css`

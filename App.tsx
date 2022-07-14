@@ -9,4 +9,4 @@ const App = () => {
   return <Root />;
 };
 
-root.render(<App />, document.getElementById('app'));
+root.render(<App />);

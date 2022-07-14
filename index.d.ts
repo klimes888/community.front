@@ -17,3 +17,8 @@ declare module 'react-query/types/react/QueryClientProvider' {
     children?: ReactNode;
   }
 }
+
+declare module '*.svg' {
+  const content: any;
+  export default content;
+}
