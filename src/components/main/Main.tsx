@@ -64,7 +64,6 @@ export default function Main() {
 
   return (
     <div css={bodyStyle}>
-      <div css={test} />
       <div css={divideDic}>
         {/* 메인 소개 */}
         <div css={secetionDivide}>
@@ -111,14 +110,6 @@ const styleManger = ({ type, value }) => {
       break;
   }
 };
-const test = css`
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-`;
 
 const divideDic = css`
   display: block;
